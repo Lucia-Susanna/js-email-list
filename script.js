@@ -2,6 +2,7 @@ const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 let email = ''
 let emails = [];
 
+
 //mi creo una funzione che, richiamando l'endpoint, quando richiamata genera un indirizzo email
 
 function generateEmail(){
@@ -9,20 +10,25 @@ function generateEmail(){
    .then(response =>{
     if(response.data.success){
       email = response.data.response
-      console.log(email);
-    }
-    
+      emails.push(email)    
+    }     
+    if(emails.length < 10){
+      generateEmail()
+    } 
   })
   .catch(error =>
     console.log(error)
   )
+
+ emails
 }
 
+generateEmail()
+console.log(emails)
 // genero per 10 volte una email (richiamando l'apposita funzione) e pusho ciascun elemento enerato nell'array 
 
-while(emails.length < 10){
-  generateEmail()
-  emails.push(email)
-}
+   
 
-console.log(emails);
+
+// prendo l'elemento html in cui voglio stampare i miei indirizzi e, in un ciclo for of lo stampo
+
