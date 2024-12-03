@@ -6,11 +6,8 @@ const emailList= document.getElementById('printEmail')
 //mi creo una funzione che, richiamando l'endpoint, quando richiamata genera un indirizzo email
 console.log(emails)
 
-generateEmail()
 
-function printList(){
-  emails.forEach(mail => emailList.innerHTML += `<li>${mail}</li>`)
-}
+generateEmail()
 
 function generateEmail(){
   
@@ -20,15 +17,22 @@ function generateEmail(){
       email = response.data.response
       emails.push(email)    
     }     
-    
-    // genero per 10 volte una email (richiamando l'apposita funzione) e pusho ciascun elemento enerato nell'array 
+      // genero per 10 volte una email (richiamando l'apposita funzione) e pusho ciascun elemento enerato nell'array 
     if(emails.length < 10){
+      document.getElementById('loading').classList.add('d-none')
+      emailList.classList.remove('d-none')
       generateEmail()
+      // se l'array è pieno richiamo la funzione che mi stampa il risultato in pagina
     } else printList()
   })
   .catch(error =>
     console.log(error)
   )
-
 }
-// prendo l'elemento html in cui voglio stampare i miei indirizzi e, in un ciclo for of lo stampo
+
+// creo la funzione che mi stampa in pagina gli indirizzi email se l'array è comoleto
+function printList(){
+  emails.forEach(mail => emailList.innerHTML += `<li>${mail}</li>`)
+}
+
+document.getElementById('generate').addEventListener('click', () => generateEmail())
