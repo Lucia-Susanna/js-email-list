@@ -37,6 +37,6 @@ function printList(){
 
 // cliccando il bottone svuoto l'html e genero altri 10 indirizzi
 document.getElementById('generate').addEventListener('click', () => {
-  emailList.innerHTML = ''
+  emails = []
   generateEmail()
 })
