@@ -3,9 +3,9 @@ let email = ''
 let emails = [];
 const emailList= document.getElementById('printEmail')
 
-//mi creo una funzione che, richiamando l'endpoint, quando richiamata genera un indirizzo email
-console.log(emails)
 
+
+//mi creo una funzione che, richiamando l'endpoint, quando richiamata genera un indirizzo email
 
 generateEmail()
 
