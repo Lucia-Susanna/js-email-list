@@ -35,4 +35,7 @@ function printList(){
   emails.forEach(mail => emailList.innerHTML += `<li>${mail}</li>`)
 }
 
-document.getElementById('generate').addEventListener('click', () => generateEmail())
+document.getElementById('generate').addEventListener('click', () => {
+  emailList.innerHTML = ''
+  generateEmail()
+})
