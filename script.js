@@ -19,11 +19,13 @@ function generateEmail(){
     }     
       // genero per 10 volte una email (richiamando l'apposita funzione) e pusho ciascun elemento enerato nell'array 
     if(emails.length < 10){
-      document.getElementById('loading').classList.add('d-none')
-      emailList.classList.remove('d-none')
       generateEmail()
       // se l'array è pieno richiamo la funzione che mi stampa il risultato in pagina
-    } else printList()
+    } else {
+      document.getElementById('loading').classList.add('d-none')
+      emailList.classList.remove('d-none')
+      printList()
+    }
   })
   .catch(error =>
     console.log(error)
@@ -37,6 +39,8 @@ function printList(){
 
 // cliccando il bottone svuoto l'html e genero altri 10 indirizzi
 document.getElementById('generate').addEventListener('click', () => {
+  document.getElementById('loading').classList.remove('d-none')
+  emailList.classList.add('d-none')
   emails = []
   emailList.innerHTML= ''
   generateEmail()
