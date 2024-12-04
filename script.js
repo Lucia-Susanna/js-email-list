@@ -16,16 +16,16 @@ function generateEmail(){
     if(response.data.success){
       email = response.data.response
       emails.push(email)    
-    }     
       // genero per 10 volte una email (richiamando l'apposita funzione) e pusho ciascun elemento enerato nell'array 
-    if(emails.length < 10){
-      generateEmail()
-      // se l'array è pieno richiamo la funzione che mi stampa il risultato in pagina
-    } else {
-      document.getElementById('loading').classList.add('d-none')
-      emailList.classList.remove('d-none')
-      printList()
-    }
+      if(emails.length < 10){
+        generateEmail()
+        // se l'array è pieno richiamo la funzione che mi stampa il risultato in pagina
+      } else {
+        document.getElementById('loading').classList.add('d-none')
+        emailList.classList.remove('d-none')
+        printList()
+      }
+    }     
   })
   .catch(error =>
     console.log(error)
